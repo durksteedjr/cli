@@ -1,5 +1,19 @@
 {
     "name": "workspace",
     "version": "0.0.0",
-    "private": true
+    "private": true,
+    "scripts": {
+        "commitlint": "commitlint",
+        "commitlint:edit": "pnpm run commitlint --edit",
+        "husky": "husky",
+        "husky:commit-msg": "pnpm run commitlint:edit",
+        "husky:install": "pnpm run husky install",
+        "prepare": "pnpm run husky:install"
+    },
+    "devDependencies": {
+        "@commitlint/cli": "^17.8.0",
+        "@commitlint/config-conventional": "^17.8.0",
+        "@commitlint/types": "^17.4.4",
+        "husky": "^8.0.3"
+    }
 }
