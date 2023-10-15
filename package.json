@@ -1,19 +1,39 @@
 {
-    "name": "workspace",
-    "version": "0.0.0",
-    "private": true,
-    "scripts": {
-        "commitlint": "commitlint",
-        "commitlint:edit": "pnpm run commitlint --edit",
-        "husky": "husky",
-        "husky:commit-msg": "pnpm run commitlint:edit",
-        "husky:install": "pnpm run husky install",
-        "prepare": "pnpm run husky:install"
-    },
-    "devDependencies": {
-        "@commitlint/cli": "^17.8.0",
-        "@commitlint/config-conventional": "^17.8.0",
-        "@commitlint/types": "^17.4.4",
-        "husky": "^8.0.3"
-    }
+  "name": "workspace",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "commitlint": "commitlint",
+    "commitlint:edit": "pnpm run commitlint --edit",
+    "eslint": "eslint",
+    "eslint:all": "pnpm run eslint \"./**/*.{js,jsx,ts,tsx}\"",
+    "eslint:fix": "pnpm eslint --fix",
+    "eslint:fix:all": "pnpm run eslint:fix \"./**/*.{js,jsx,ts,tsx}\"",
+    "husky": "husky",
+    "husky:commit-msg": "pnpm run commitlint:edit",
+    "husky:install": "pnpm run husky install",
+    "husky:pre-commit": "pnpm run eslint:all && pnpm run prettier:check:all",
+    "lint": "pnpm run eslint:fix:all && pnpm run prettier:write:all",
+    "lint-staged": "lint-staged",
+    "prepare": "pnpm run husky:install",
+    "prettier": "prettier",
+    "prettier:check": "pnpm run prettier --check",
+    "prettier:check:all": "pnpm run prettier:check \"./**/*.{js,json,jsx,md,ts,tsx,yaml}\"",
+    "prettier:write": "pnpm run prettier --write",
+    "prettier:write:all": "pnpm run prettier:write \"./**/*.{js,json,jsx,md,ts,tsx,yaml}\""
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.8.0",
+    "@commitlint/config-conventional": "^17.8.0",
+    "@commitlint/types": "^17.4.4",
+    "@typescript-eslint/eslint-plugin": "^6.7.5",
+    "@typescript-eslint/parser": "^6.7.5",
+    "eslint": "^8.51.0",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
+    "eslint-plugin-unused-imports": "^3.0.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.0.1",
+    "prettier": "^3.0.3",
+    "prettier-plugin-tailwindcss": "^0.5.6"
+  }
 }
